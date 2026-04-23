@@ -27,9 +27,9 @@ public class ChargingOrderController {
     @Parameter(name = "page", description = "页码，从1开始", required = true)
     @Parameter(name = "limit", description = "每页数量", required = true)
     @GetMapping("/list")
-    public Result<List<ChargingOrder>> list(Integer page, Integer limit) {
+    public Result<Page<ChargingOrder>> list(Integer page, Integer limit) {
         Page<ChargingOrder> pageObj = new Page<>(page, limit);
-        return Result.ok(chargingOrderService.list(pageObj));
+        return Result.ok(chargingOrderService.page(pageObj));
     }
 
     @Operation(summary = "根据ID查询订单", description = "根据订单ID获取订单详细信息")

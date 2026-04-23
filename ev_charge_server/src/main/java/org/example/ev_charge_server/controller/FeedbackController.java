@@ -27,9 +27,9 @@ public class FeedbackController {
     @Parameter(name = "page", description = "页码，从1开始", required = true)
     @Parameter(name = "limit", description = "每页数量", required = true)
     @GetMapping("/list")
-    public Result<List<Feedback>> list(Integer page, Integer limit) {
+    public Result<Page<Feedback>> list(Integer page, Integer limit) {
         Page<Feedback> pageObj = new Page<>(page, limit);
-        return Result.ok(feedbackService.list(pageObj));
+        return Result.ok(feedbackService.page(pageObj));
     }
 
     @Operation(summary = "根据ID查询反馈", description = "根据反馈ID获取详细信息")

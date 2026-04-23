@@ -25,10 +25,9 @@ public class AdminController {
     //http://127.0.0.1:8080/admin/list
     @Operation(summary = "查询所有管理员",description = "查询所有管理员信息")
     @GetMapping("/admin/list")
-    public List<Admin> list( Integer page, Integer limit ) {
-        //创建分页对象
+    public Result<Page<Admin>> list(Integer page, Integer limit) {
         Page<Admin> pageObj = new Page<>(page, limit);
-        return adminService.list(pageObj);
+        return Result.ok(adminService.page(pageObj));
     }
 
     //http://127.0.0.1:8080/admin/login?username=admin&password=123456

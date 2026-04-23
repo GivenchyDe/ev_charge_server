@@ -27,9 +27,9 @@ public class GunController {
     @Parameter(name = "page", description = "页码，从1开始", required = true)
     @Parameter(name = "limit", description = "每页数量", required = true)
     @GetMapping("/list")
-    public Result<List<Gun>> list(Integer page, Integer limit) {
+    public Result<Page<Gun>> list(Integer page, Integer limit) {
         Page<Gun> pageObj = new Page<>(page, limit);
-        return Result.ok(gunService.list(pageObj));
+        return Result.ok(gunService.page(pageObj));
     }
 
     @Operation(summary = "根据充电桩查询充电枪", description = "根据充电桩ID查询该设备下的所有充电枪")

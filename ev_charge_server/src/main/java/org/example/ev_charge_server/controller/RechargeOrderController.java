@@ -27,9 +27,9 @@ public class RechargeOrderController {
     @Parameter(name = "page", description = "页码，从1开始", required = true)
     @Parameter(name = "limit", description = "每页数量", required = true)
     @GetMapping("/list")
-    public Result<List<RechargeOrder>> list(Integer page, Integer limit) {
+    public Result<Page<RechargeOrder>> list(Integer page, Integer limit) {
         Page<RechargeOrder> pageObj = new Page<>(page, limit);
-        return Result.ok(rechargeOrderService.list(pageObj));
+        return Result.ok(rechargeOrderService.page(pageObj));
     }
 
     @Operation(summary = "根据ID查询充值订单", description = "根据充值订单ID获取详细信息")

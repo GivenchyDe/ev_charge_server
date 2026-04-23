@@ -27,9 +27,9 @@ public class ChargerController {
     @Parameter(name = "page", description = "页码，从1开始", required = true)
     @Parameter(name = "limit", description = "每页数量", required = true)
     @GetMapping("/list")
-    public Result<List<Charger>> list(Integer page, Integer limit) {
+    public Result<Page<Charger>> list(Integer page, Integer limit) {
         Page<Charger> pageObj = new Page<>(page, limit);
-        return Result.ok(chargerService.list(pageObj));
+        return Result.ok(chargerService.page(pageObj));
     }
 
     @Operation(summary = "根据ID查询充电桩", description = "根据充电桩ID获取详细信息")

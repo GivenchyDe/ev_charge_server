@@ -27,9 +27,9 @@ public class StationController {
     @Parameter(name = "page", description = "页码，从1开始", required = true)
     @Parameter(name = "limit", description = "每页数量", required = true)
     @GetMapping("/list")
-    public Result<List<Station>> list(Integer page, Integer limit) {
+    public Result<Page<Station>> list(Integer page, Integer limit) {
         Page<Station> pageObj = new Page<>(page, limit);
-        return Result.ok(stationService.list(pageObj));
+        return Result.ok(stationService.page(pageObj));
     }
 
     @Operation(summary = "根据ID查询网点", description = "根据网点ID获取网点详细信息")

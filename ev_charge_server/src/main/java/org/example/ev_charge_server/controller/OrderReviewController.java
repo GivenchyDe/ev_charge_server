@@ -27,9 +27,9 @@ public class OrderReviewController {
     @Parameter(name = "page", description = "页码，从1开始", required = true)
     @Parameter(name = "limit", description = "每页数量", required = true)
     @GetMapping("/list")
-    public Result<List<OrderReview>> list(Integer page, Integer limit) {
+    public Result<Page<OrderReview>> list(Integer page, Integer limit) {
         Page<OrderReview> pageObj = new Page<>(page, limit);
-        return Result.ok(orderReviewService.list(pageObj));
+        return Result.ok(orderReviewService.page(pageObj));
     }
 
     @Operation(summary = "根据ID查询评价", description = "根据评价ID获取详细信息")

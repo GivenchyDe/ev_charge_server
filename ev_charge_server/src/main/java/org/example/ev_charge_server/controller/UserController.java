@@ -28,9 +28,9 @@ public class UserController {
     @Parameter(name = "page", description = "页码，从1开始", required = true)
     @Parameter(name = "limit", description = "每页数量", required = true)
     @GetMapping("/list")
-    public Result<List<User>> list(Integer page, Integer limit) {
+    public Result<Page<User>> list(Integer page, Integer limit) {
         Page<User> pageObj = new Page<>(page, limit);
-        return Result.ok(userService.list(pageObj));
+        return Result.ok(userService.page(pageObj));
     }
 
     @Operation(summary = "根据ID查询用户", description = "根据用户ID获取用户详细信息")

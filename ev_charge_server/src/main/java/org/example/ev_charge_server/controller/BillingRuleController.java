@@ -27,9 +27,9 @@ public class BillingRuleController {
     @Parameter(name = "page", description = "页码，从1开始", required = true)
     @Parameter(name = "limit", description = "每页数量", required = true)
     @GetMapping("/list")
-    public Result<List<BillingRule>> list(Integer page, Integer limit) {
+    public Result<Page<BillingRule>> list(Integer page, Integer limit) {
         Page<BillingRule> pageObj = new Page<>(page, limit);
-        return Result.ok(billingRuleService.list(pageObj));
+        return Result.ok(billingRuleService.page(pageObj));
     }
 
     @Operation(summary = "根据ID查询计费规则", description = "根据计费规则ID获取详细信息")

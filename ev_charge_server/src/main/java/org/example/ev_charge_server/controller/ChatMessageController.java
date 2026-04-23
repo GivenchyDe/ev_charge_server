@@ -27,9 +27,9 @@ public class ChatMessageController {
     @Parameter(name = "page", description = "页码，从1开始", required = true)
     @Parameter(name = "limit", description = "每页数量", required = true)
     @GetMapping("/list")
-    public Result<List<ChatMessage>> list(Integer page, Integer limit) {
+    public Result<Page<ChatMessage>> list(Integer page, Integer limit) {
         Page<ChatMessage> pageObj = new Page<>(page, limit);
-        return Result.ok(chatMessageService.list(pageObj));
+        return Result.ok(chatMessageService.page(pageObj));
     }
 
     @Operation(summary = "根据用户查询聊天记录", description = "根据用户ID查询该用户的所有聊天记录")

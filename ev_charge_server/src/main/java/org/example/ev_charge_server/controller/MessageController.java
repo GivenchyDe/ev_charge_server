@@ -27,9 +27,9 @@ public class MessageController {
     @Parameter(name = "page", description = "页码，从1开始", required = true)
     @Parameter(name = "limit", description = "每页数量", required = true)
     @GetMapping("/list")
-    public Result<List<Message>> list(Integer page, Integer limit) {
+    public Result<Page<Message>> list(Integer page, Integer limit) {
         Page<Message> pageObj = new Page<>(page, limit);
-        return Result.ok(messageService.list(pageObj));
+        return Result.ok(messageService.page(pageObj));
     }
 
     @Operation(summary = "根据用户查询消息", description = "根据用户ID查询该用户的所有消息")

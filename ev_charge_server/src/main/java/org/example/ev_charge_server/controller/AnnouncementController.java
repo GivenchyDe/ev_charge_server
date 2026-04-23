@@ -27,9 +27,9 @@ public class AnnouncementController {
     @Parameter(name = "page", description = "页码，从1开始", required = true)
     @Parameter(name = "limit", description = "每页数量", required = true)
     @GetMapping("/list")
-    public Result<List<Announcement>> list(Integer page, Integer limit) {
+    public Result<Page<Announcement>> list(Integer page, Integer limit) {
         Page<Announcement> pageObj = new Page<>(page, limit);
-        return Result.ok(announcementService.list(pageObj));
+        return Result.ok(announcementService.page(pageObj));
     }
 
     @Operation(summary = "根据ID查询公告", description = "根据公告ID获取详细信息")
